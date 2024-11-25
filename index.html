@@ -30,14 +30,20 @@
   <script>
     const validCoupons = ["SAVE10", "WELCOME20", "DISCOUNT30"]; // Example codes
 
-    document.getElementById("couponForm").addEventListener("submit", (e) => {
+    document.getElementById("couponForm").addEventListener("submit", async(e) => {
       e.preventDefault();
       const code = document.getElementById("couponCode").value.toUpperCase();
-      const message = validCoupons.includes(code)
-        ? "Coupon applied successfully!"
-        : "Invalid or expired coupon code.";
-      document.getElementById("message").textContent = message;
-    });
+      const response = await fetch("http://geoapi.chongpuu.com:8000/geopoint", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ code }),
+  });
+
+  const data = await response.json();
+  document.getElementById("message").textContent = data.message;
+});
   </script>
 </body>
 </html>
