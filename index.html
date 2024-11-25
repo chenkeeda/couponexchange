@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coupon Code Validator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    form {
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Enter Your Coupon Code</h1>
+  <form id="couponForm">
+    <input type="text" id="couponCode" placeholder="Enter code" required />
+    <button type="submit">Validate</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    const validCoupons = ["SAVE10", "WELCOME20", "DISCOUNT30"]; // Example codes
+
+    document.getElementById("couponForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const code = document.getElementById("couponCode").value.toUpperCase();
+      const message = validCoupons.includes(code)
+        ? "Coupon applied successfully!"
+        : "Invalid or expired coupon code.";
+      document.getElementById("message").textContent = message;
+    });
+  </script>
+</body>
+</html>
