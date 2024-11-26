@@ -33,7 +33,7 @@
     document.getElementById("couponForm").addEventListener("submit", async(e) => {
       e.preventDefault();
       const code = document.getElementById("couponCode").value.toUpperCase();
-      const response = await fetch("https://geoapi.chongpuu.com:8000/geopoint", {
+      const response = await fetch("https://backendapi-9xm1.onrender.com//remoteurl", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
